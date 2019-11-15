@@ -1,3 +1,4 @@
+/* global Lea */
 import { Meteor } from 'meteor/meteor'
 import { Accounts } from 'meteor/accounts-base'
 
@@ -12,7 +13,7 @@ if (Meteor.isClient) {
     }
 
     const credentialRequestCompleteCallback = Accounts.oauth.credentialRequestCompleteHandler(callback)
-    global.Lea.requestCredential(options, credentialRequestCompleteCallback)
+    Lea.requestCredential(options, credentialRequestCompleteCallback)
   }
   Accounts.registerClientLoginFunction('lea', loginWithLea)
   Meteor.loginWithLea = (...args) => Accounts.applyLoginFunction('lea', args)
