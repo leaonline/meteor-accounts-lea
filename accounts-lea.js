@@ -1,3 +1,6 @@
+import { Meteor } from 'meteor/meteor'
+import { Accounts } from 'meteor/accounts-base'
+
 Accounts.oauth.registerService('lea')
 
 if (Meteor.isClient) {
@@ -9,7 +12,7 @@ if (Meteor.isClient) {
     }
 
     const credentialRequestCompleteCallback = Accounts.oauth.credentialRequestCompleteHandler(callback)
-    Lea.requestCredential(options, credentialRequestCompleteCallback)
+    global.Lea.requestCredential(options, credentialRequestCompleteCallback)
   }
   Accounts.registerClientLoginFunction('lea', loginWithLea)
   Meteor.loginWithLea = (...args) => Accounts.applyLoginFunction('lea', args)
@@ -17,7 +20,7 @@ if (Meteor.isClient) {
   Accounts.addAutopublishFields({
     // publish all fields including access token, which can legitimately
     // be used from the client (if transmitted over ssl or on localhost).
-    forLoggedInUser: [ 'services.lea' ],
+    forLoggedInUser: ['services.lea'],
     forOtherUsers: [
       'services.lea.id', 'services.lea.username'
     ]
