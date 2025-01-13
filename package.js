@@ -1,7 +1,7 @@
 /* eslint-env meteor */
 Package.describe({
   name: 'leaonline:accounts-lea',
-  version: '1.0.1',
+  version: '2.0.0',
   // Brief, one-line summary of the package.
   summary: 'Custom login using an own oauth2-server',
   // URL to the Git repository containing the source code for this package.
@@ -12,14 +12,14 @@ Package.describe({
 })
 
 Package.onUse(function (api) {
-  api.versionsFrom('1.8.1')
+  api.versionsFrom(['1.8.1', '2.8.0', '3.0.1'])
   api.use('ecmascript')
   api.use('accounts-base', ['client', 'server'])
 
   // Export Accounts (etc) to packages using this one.
   api.imply('accounts-base', ['client', 'server'])
   api.use('accounts-oauth', ['client', 'server'])
-  api.use('leaonline:oauth-lea@1.0.1')
+  api.use('leaonline:oauth-lea@2.0.0 || 3.0.0')
   api.imply('leaonline:oauth-lea')
 
   // If users use accounts-ui but not facebook-config-ui, give them a tip.
