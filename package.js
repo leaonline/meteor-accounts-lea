@@ -1,7 +1,7 @@
 /* eslint-env meteor */
 Package.describe({
   name: 'leaonline:accounts-lea',
-  version: '2.0.0',
+  version: '2.0.1',
   // Brief, one-line summary of the package.
   summary: 'Custom login using an own oauth2-server',
   // URL to the Git repository containing the source code for this package.
@@ -12,7 +12,7 @@ Package.describe({
 })
 
 Package.onUse(function (api) {
-  api.versionsFrom(['1.8.1', '2.8.0', '3.0.1'])
+  api.versionsFrom(['1.8.1', '2.8.0', '3.0.1', '3.4'])
   api.use('ecmascript')
   api.use('accounts-base', ['client', 'server'])
 
